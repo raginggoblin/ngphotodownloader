@@ -4,14 +4,16 @@
 # Permission to copy, modify, and distribute is granted under GPLv3
 # Last Revised 23 April 2017
 
-# instead of 'cinnamon-session|gnome-session|mate-session"',  'noutilus', or 'compiz' can be used
+# instead of 'cinnamon-session|gnome-session|mate-session"',  'nautilus', or 'compiz' can be used
 # or the name of a process of a graphical program about that you are sure that is
 # running after you log in the X session
-PID=$(pgrep -o "cinnamon-sess|gnome-sess|mate-sess")
-export DBUS_SESSION_BUS_ADDRESS=$(grep -z DBUS_SESSION_BUS_ADDRESS /proc/$PID/environ|cut -d= -f2-)
+# PID=$(pgrep -o "cinnamon-sess|gnome-sess|mate-sess")
+# export DBUS_SESSION_BUS_ADDRESS=$(grep -z DBUS_SESSION_BUS_ADDRESS /proc/$PID/environ|cut -d= -f2-)
+
+
 
 #check for network
-while [ -z "`curl -s --head https://google.com/ | head -n 1 | grep 'HTTP/1.[01]'`" ]
+while [ -z "`curl -s --head https://google.com/ | head -n 1 | grep 'HTTP/2'`" ]
 do
 	echo "Network is down!!"
 	sleep 1800
